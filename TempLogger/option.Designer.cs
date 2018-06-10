@@ -40,9 +40,15 @@
             this.butSave = new System.Windows.Forms.Button();
             this.butCanc = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.GoupLog = new System.Windows.Forms.GroupBox();
+            this.textLogPath = new System.Windows.Forms.TextBox();
+            this.butLogBrowse = new System.Windows.Forms.Button();
+            this.checkLog = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.AlertGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMax)).BeginInit();
+            this.GoupLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // AlertGroup
@@ -154,12 +160,65 @@
             // openFileDialog
             // 
             this.openFileDialog.FileName = "fileDialog";
+            this.openFileDialog.ReadOnlyChecked = true;
+            this.openFileDialog.Title = "Find a Sound";
+            // 
+            // GoupLog
+            // 
+            this.GoupLog.Controls.Add(this.label2);
+            this.GoupLog.Controls.Add(this.checkLog);
+            this.GoupLog.Controls.Add(this.textLogPath);
+            this.GoupLog.Controls.Add(this.butLogBrowse);
+            this.GoupLog.Location = new System.Drawing.Point(201, 13);
+            this.GoupLog.Name = "GoupLog";
+            this.GoupLog.Size = new System.Drawing.Size(200, 141);
+            this.GoupLog.TabIndex = 3;
+            this.GoupLog.TabStop = false;
+            this.GoupLog.Text = "Log";
+            // 
+            // textLogPath
+            // 
+            this.textLogPath.Location = new System.Drawing.Point(7, 58);
+            this.textLogPath.Name = "textLogPath";
+            this.textLogPath.Size = new System.Drawing.Size(100, 20);
+            this.textLogPath.TabIndex = 0;
+            // 
+            // butLogBrowse
+            // 
+            this.butLogBrowse.Location = new System.Drawing.Point(113, 58);
+            this.butLogBrowse.Name = "butLogBrowse";
+            this.butLogBrowse.Size = new System.Drawing.Size(75, 23);
+            this.butLogBrowse.TabIndex = 6;
+            this.butLogBrowse.Text = "browse";
+            this.butLogBrowse.UseVisualStyleBackColor = true;
+            this.butLogBrowse.Click += new System.EventHandler(this.textLogPath_Click);
+            // 
+            // checkLog
+            // 
+            this.checkLog.AutoSize = true;
+            this.checkLog.Location = new System.Drawing.Point(7, 17);
+            this.checkLog.Name = "checkLog";
+            this.checkLog.Size = new System.Drawing.Size(87, 17);
+            this.checkLog.TabIndex = 7;
+            this.checkLog.Text = "Save :Value:";
+            this.checkLog.UseVisualStyleBackColor = true;
+            this.checkLog.CheckedChanged += new System.EventHandler(this.checkLog_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Where to save";
             // 
             // option
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(208, 203);
+            this.ClientSize = new System.Drawing.Size(413, 208);
+            this.Controls.Add(this.GoupLog);
             this.Controls.Add(this.butCanc);
             this.Controls.Add(this.butSave);
             this.Controls.Add(this.AlertGroup);
@@ -170,6 +229,8 @@
             this.AlertGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMax)).EndInit();
+            this.GoupLog.ResumeLayout(false);
+            this.GoupLog.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -188,5 +249,10 @@
         private System.Windows.Forms.Button butbrowse;
         private System.Windows.Forms.TextBox textPath;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.GroupBox GoupLog;
+        private System.Windows.Forms.CheckBox checkLog;
+        private System.Windows.Forms.TextBox textLogPath;
+        private System.Windows.Forms.Button butLogBrowse;
+        private System.Windows.Forms.Label label2;
     }
 }

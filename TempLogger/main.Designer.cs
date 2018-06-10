@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Cont_text = new System.Windows.Forms.Button();
             this.Ports_compo = new System.Windows.Forms.ComboBox();
             this.tempchart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -62,28 +62,28 @@
             // 
             // tempchart
             // 
-            chartArea4.AlignmentOrientation = ((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical | System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal)));
-            chartArea4.Name = "ChartArea1";
-            this.tempchart.ChartAreas.Add(chartArea4);
-            legend4.Enabled = false;
-            legend4.Name = "Legend1";
-            this.tempchart.Legends.Add(legend4);
+            chartArea5.AlignmentOrientation = ((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical | System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal)));
+            chartArea5.Name = "ChartArea1";
+            this.tempchart.ChartAreas.Add(chartArea5);
+            legend5.Enabled = false;
+            legend5.Name = "Legend1";
+            this.tempchart.Legends.Add(legend5);
             this.tempchart.Location = new System.Drawing.Point(9, 33);
             this.tempchart.Margin = new System.Windows.Forms.Padding(2);
             this.tempchart.Name = "tempchart";
             this.tempchart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             this.tempchart.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "TempSeries";
-            this.tempchart.Series.Add(series4);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Legend = "Legend1";
+            series5.Name = "TempSeries";
+            this.tempchart.Series.Add(series5);
             this.tempchart.Size = new System.Drawing.Size(492, 325);
             this.tempchart.TabIndex = 4;
             this.tempchart.Text = "Temp";
-            title4.Name = "Tempertur";
-            title4.Text = "Tempertur";
-            this.tempchart.Titles.Add(title4);
+            title5.Name = "Tempertur";
+            title5.Text = "Tempertur";
+            this.tempchart.Titles.Add(title5);
             // 
             // butOption
             // 
@@ -115,7 +115,7 @@
             this.Controls.Add(this.Cont_text);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "main";
-            this.Text = "Form1";
+            this.Text = "TempLogger";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tempchart)).EndInit();
             this.ResumeLayout(false);

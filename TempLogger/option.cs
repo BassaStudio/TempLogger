@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TempLogger
@@ -30,6 +23,9 @@ namespace TempLogger
             Properties.Settings.Default.AlertMin = numMin.Value;
             Properties.Settings.Default.AlertPath = textPath.Text;
 
+            Properties.Settings.Default.LogBool = checkLog.Checked;
+            Properties.Settings.Default.LogPath = textLogPath.Text;
+
             Properties.Settings.Default.Save();
             this.Close();
         }
@@ -38,9 +34,15 @@ namespace TempLogger
         {
             numMax.Value = Properties.Settings.Default.AlertMax;
             numMin.Value = Properties.Settings.Default.AlertMin;
+
             CheckAlert.Checked = Properties.Settings.Default.AlertBool;
+            checkLog.Checked = Properties.Settings.Default.LogBool;
+
             textPath.Text = Properties.Settings.Default.AlertPath;
+            textLogPath.Text = Properties.Settings.Default.LogPath;
+
             toggleAlert();
+            logToggle();
         }
 
         private void CheckAlert_CheckedChanged(object sender, EventArgs e)
@@ -59,10 +61,51 @@ namespace TempLogger
         private void butbrowse_Click(object sender, EventArgs e)
         {
             OpenFileDialog Result = new OpenFileDialog();
+
+            Result.CheckFileExists = true;
+            Result.Filter = "WAV files (*.wav)|*.wav";
+            Result.DefaultExt = ".wav";
+
             if (Result.ShowDialog() == DialogResult.OK)
             {
                 textPath.Text = Result.FileName;
             }
+        }
+
+        private void checkLog_CheckedChanged(object sender, EventArgs e)
+        {
+            logToggle();
+        }
+
+        private void logToggle()
+        {
+            if (checkLog.Checked)
+                checkLog.Text = "Save On";
+            else
+                checkLog.Text = "Save Off";
+        }
+
+        private void textLogPath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog pic = getPath();
+            if (pic != null)
+            {
+                textLogPath.Text = pic.SelectedPath.ToString();
+            }
+        }
+
+        private FolderBrowserDialog getPath()
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    return fbd;
+                }
+            }
+            return null;
         }
     }
 }
