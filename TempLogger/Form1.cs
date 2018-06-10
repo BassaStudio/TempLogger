@@ -8,128 +8,98 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using rtChart;
 using System.Threading;
 
 namespace TempLogger
 {
     public partial class Form1 : Form
     {
-        bool isConnect = false;
         String[] ports;
         SerialPort port;
+        public bool isConnect = false;
 
-        string Temp = "12";
-
-        Thread listen;
+        kayChart serialDataChart;
 
         public Form1()
         {
             InitializeComponent();
-
         }
 
-        short getTemp()
+        private void Cont_text_Click(object sender, EventArgs e)
         {
-            Random r = new Random();
-            short.TryParse(r.Next(5, 24).ToString(), out short temp);
-            return temp;
-        }
-
-        void getAvailableComPorts()
-        {
-            ports = SerialPort.GetPortNames();
-
-            foreach (string port in ports)
+            if(!isConnect)
             {
-                Ports_compo.Items.Add(port);
-                if (ports[0] == null)
-                {
-                    Ports_compo.SelectedItem = ports[0];
-                }
+                ConnectToArduino();
+            } else
+            {
+                DisconectToArduino();
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            getAvailableComPorts();
-        }
+            serialDataChart = new kayChart(tempchart, 60);
+            serialDataChart.serieName = "TempSeries";
 
-        private void dataListen()
-        {
-            while (isConnect /*port.IsOpen*/)
+            ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
             {
-                //label1.Text = port.ReadLine();
+                Ports_compo.Items.Add(port);
+                if(port[0] == null)
+                {
+                    Ports_compo.SelectedItem = ports[0];
+                }
             }
+
         }
 
-        private void connectToArduino()
+        private void ConnectToArduino()
         {
-            isConnect = true;
+            String selectedPort = Ports_compo.GetItemText(Ports_compo.SelectedItem);
 
-            string selectedPort = Ports_compo.GetItemText(Ports_compo.SelectedItem);
             port = new SerialPort(selectedPort, 9600, Parity.None, 8, StopBits.One);
-            port.Open();
-
-            Cont_text.Text = "Disconnect";
-
-            if (port.IsOpen)
+            port.DataReceived += new SerialDataReceivedEventHandler(SerialDataReceivedEventHandler);
+            
+            if(!port.IsOpen)
             {
-                listen = new Thread(dataListen);
-                listen.Start();
+                port.Open();
+                isConnect = true;
+                Cont_text.Text = "Disconnect";
             }
         }
 
-        private void disconnectFromArduino()
+        private void SerialDataReceivedEventHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            isConnect = false;
+            SerialPort sData = sender as SerialPort;
+            string recvData = sData.ReadLine();
+
+            serialData.Invoke((MethodInvoker)delegate
+            {
+                //serialData.AppendText(recvData);
+                serialData.Text = recvData;
+            });
+
+            double data;
+            bool result = Double.TryParse(recvData, out data);
+            if(result)
+            {
+                serialDataChart.TriggeredUpdate(data);
+            }
+        }
+
+
+        public void DisconectToArduino()
+        {
             port.Close();
+            isConnect = false;
             Cont_text.Text = "Connect";
         }
 
-        private void Cont_text_Click(object sender, EventArgs e)
+        private void serialData_TextChanged(object sender, EventArgs e)
         {
-            if (!isConnect)
-            {
-                connectToArduino();
-            }
-            else
-            {
-                disconnectFromArduino();
-            }
-        }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
- 
-        }
-
-        short[] Data_chart; 
-
-        public void chart()
-        {
-            Data_chart = new short[8];
-
-            for (short i = 0; i < Data_chart.Length; i++)
-            {
-                Data_chart[i] = getTemp();
-            }
-
-            UpdateChart();
-        }
-
-        private void UpdateChart()
-        {
-            tempchart.Series["TempSeries"].Points.Clear();
-
-            for(int i = 0; i < Data_chart.Length - 1; i++)
-            {
-                tempchart.Series["TempSeries"].Points.AddY(Data_chart[i]);
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            chart();
+            serialData.SelectionStart = serialData.Text.Length;
+            serialData.ScrollToCaret();
         }
     }
 }
