@@ -9,11 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using rtChart;
+using System.Media;
 using System.Threading;
 
 namespace TempLogger
 {
-    public partial class Form1 : Form
+    public partial class main : Form
     {
         String[] ports;
         SerialPort port;
@@ -21,7 +22,7 @@ namespace TempLogger
 
         kayChart serialDataChart;
 
-        public Form1()
+        public main()
         {
             InitializeComponent();
         }
@@ -58,14 +59,19 @@ namespace TempLogger
         {
             String selectedPort = Ports_compo.GetItemText(Ports_compo.SelectedItem);
 
-            port = new SerialPort(selectedPort, 9600, Parity.None, 8, StopBits.One);
-            port.DataReceived += new SerialDataReceivedEventHandler(SerialDataReceivedEventHandler);
+            try {
+                port = new SerialPort(selectedPort, 9600, Parity.None, 8, StopBits.One);
+                port.DataReceived += new SerialDataReceivedEventHandler(SerialDataReceivedEventHandler);
             
-            if(!port.IsOpen)
+                if(!port.IsOpen)
+                {
+                    port.Open();
+                    isConnect = true;
+                    Cont_text.Text = "Disconnect";
+                }
+            } catch
             {
-                port.Open();
-                isConnect = true;
-                Cont_text.Text = "Disconnect";
+                MessageBox.Show("You need to have select a port");
             }
         }
 
@@ -74,10 +80,10 @@ namespace TempLogger
             SerialPort sData = sender as SerialPort;
             string recvData = sData.ReadLine();
 
-            serialData.Invoke((MethodInvoker)delegate
+            serialData2.Invoke((MethodInvoker)delegate
             {
                 //serialData.AppendText(recvData);
-                serialData.Text = recvData;
+                serialData2.Text = recvData + "°";
             });
 
             double data;
@@ -85,6 +91,30 @@ namespace TempLogger
             if(result)
             {
                 serialDataChart.TriggeredUpdate(data);
+            }
+
+            if(double.TryParse(Properties.Settings.Default.AlertMax.ToString(), out double max) && Properties.Settings.Default.AlertBool)
+                if(double.TryParse(Properties.Settings.Default.AlertMin.ToString(), out double min))
+                {
+                    if (data > max)
+                    {
+                        sound();
+                    } else if(data < min)
+                    {
+                        sound();
+                    }
+                }
+        }
+
+        public void sound()
+        {
+            try
+            {
+                SoundPlayer sound = new SoundPlayer(Properties.Settings.Default.AlertPath);
+                sound.Play();
+            } catch
+            {
+                MessageBox.Show("Something is wrong");
             }
         }
 
@@ -96,10 +126,16 @@ namespace TempLogger
             Cont_text.Text = "Connect";
         }
 
-        private void serialData_TextChanged(object sender, EventArgs e)
+        private void butOption_Click(object sender, EventArgs e)
         {
-            serialData.SelectionStart = serialData.Text.Length;
-            serialData.ScrollToCaret();
+            if(!isConnect)
+            {
+                option optionForm = new option();
+                optionForm.ShowDialog();
+            } else
+            {
+                MessageBox.Show("You need to press the disconnect button");
+            }
         }
     }
 }
