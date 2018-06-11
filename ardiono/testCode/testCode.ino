@@ -4,7 +4,7 @@ void setup() {
 }
 
 void loop() {
-  rwd = random(15, 30);
+  int rwd = random(15, 30);
   Serial.println(rwd);
   delay(750);
 
