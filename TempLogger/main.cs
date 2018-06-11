@@ -91,15 +91,15 @@ namespace TempLogger
                     if (data > max)
                     {
                         sound();
-                        port.WriteLine("#CQFHOT");
+                        port.WriteLine("#CQFHOTNL");
                     } else if(data < min)
                     {
                         sound();
-                        port.WriteLine("#CQFLOW");
+                        port.WriteLine("#CQFLOWNL");
                     }
                 } else
                 {
-                    port.WriteLine("#CQFNOR");
+                    port.WriteLine("#CQFNORNL");
                 }
         }
 
