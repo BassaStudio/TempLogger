@@ -41,10 +41,10 @@
             this.butCanc = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.GoupLog = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkLog = new System.Windows.Forms.CheckBox();
             this.textLogPath = new System.Windows.Forms.TextBox();
             this.butLogBrowse = new System.Windows.Forms.Button();
-            this.checkLog = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.AlertGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMax)).BeginInit();
@@ -61,9 +61,11 @@
             this.AlertGroup.Controls.Add(this.numMax);
             this.AlertGroup.Controls.Add(this.labMin);
             this.AlertGroup.Controls.Add(this.labMax);
-            this.AlertGroup.Location = new System.Drawing.Point(12, 12);
+            this.AlertGroup.Location = new System.Drawing.Point(16, 15);
+            this.AlertGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AlertGroup.Name = "AlertGroup";
-            this.AlertGroup.Size = new System.Drawing.Size(182, 142);
+            this.AlertGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AlertGroup.Size = new System.Drawing.Size(243, 175);
             this.AlertGroup.TabIndex = 0;
             this.AlertGroup.TabStop = false;
             this.AlertGroup.Text = "Alert";
@@ -71,17 +73,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 97);
+            this.label1.Location = new System.Drawing.Point(9, 119);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(49, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Sound";
             // 
             // butbrowse
             // 
-            this.butbrowse.Location = new System.Drawing.Point(99, 113);
+            this.butbrowse.Location = new System.Drawing.Point(132, 139);
+            this.butbrowse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.butbrowse.Name = "butbrowse";
-            this.butbrowse.Size = new System.Drawing.Size(75, 23);
+            this.butbrowse.Size = new System.Drawing.Size(100, 28);
             this.butbrowse.TabIndex = 6;
             this.butbrowse.Text = "browse";
             this.butbrowse.UseVisualStyleBackColor = true;
@@ -89,17 +93,19 @@
             // 
             // textPath
             // 
-            this.textPath.Location = new System.Drawing.Point(7, 116);
+            this.textPath.Location = new System.Drawing.Point(9, 143);
+            this.textPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textPath.Name = "textPath";
-            this.textPath.Size = new System.Drawing.Size(86, 20);
+            this.textPath.Size = new System.Drawing.Size(113, 22);
             this.textPath.TabIndex = 5;
             // 
             // CheckAlert
             // 
             this.CheckAlert.AutoSize = true;
-            this.CheckAlert.Location = new System.Drawing.Point(10, 18);
+            this.CheckAlert.Location = new System.Drawing.Point(13, 22);
+            this.CheckAlert.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CheckAlert.Name = "CheckAlert";
-            this.CheckAlert.Size = new System.Drawing.Size(83, 17);
+            this.CheckAlert.Size = new System.Drawing.Size(107, 21);
             this.CheckAlert.TabIndex = 4;
             this.CheckAlert.Text = "Alert :Value:";
             this.CheckAlert.UseVisualStyleBackColor = true;
@@ -107,41 +113,46 @@
             // 
             // numMin
             // 
-            this.numMin.Location = new System.Drawing.Point(40, 65);
+            this.numMin.Location = new System.Drawing.Point(53, 80);
+            this.numMin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numMin.Name = "numMin";
-            this.numMin.Size = new System.Drawing.Size(120, 20);
+            this.numMin.Size = new System.Drawing.Size(160, 22);
             this.numMin.TabIndex = 3;
             // 
             // numMax
             // 
-            this.numMax.Location = new System.Drawing.Point(42, 38);
+            this.numMax.Location = new System.Drawing.Point(56, 47);
+            this.numMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numMax.Name = "numMax";
-            this.numMax.Size = new System.Drawing.Size(120, 20);
+            this.numMax.Size = new System.Drawing.Size(160, 22);
             this.numMax.TabIndex = 2;
             // 
             // labMin
             // 
             this.labMin.AutoSize = true;
-            this.labMin.Location = new System.Drawing.Point(7, 62);
+            this.labMin.Location = new System.Drawing.Point(9, 76);
+            this.labMin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labMin.Name = "labMin";
-            this.labMin.Size = new System.Drawing.Size(24, 13);
+            this.labMin.Size = new System.Drawing.Size(30, 17);
             this.labMin.TabIndex = 1;
             this.labMin.Text = "Min";
             // 
             // labMax
             // 
             this.labMax.AutoSize = true;
-            this.labMax.Location = new System.Drawing.Point(7, 40);
+            this.labMax.Location = new System.Drawing.Point(9, 49);
+            this.labMax.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labMax.Name = "labMax";
-            this.labMax.Size = new System.Drawing.Size(27, 13);
+            this.labMax.Size = new System.Drawing.Size(33, 17);
             this.labMax.TabIndex = 0;
             this.labMax.Text = "Max";
             // 
             // butSave
             // 
-            this.butSave.Location = new System.Drawing.Point(22, 165);
+            this.butSave.Location = new System.Drawing.Point(155, 208);
+            this.butSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.butSave.Name = "butSave";
-            this.butSave.Size = new System.Drawing.Size(75, 22);
+            this.butSave.Size = new System.Drawing.Size(103, 27);
             this.butSave.TabIndex = 1;
             this.butSave.Text = "Save";
             this.butSave.UseVisualStyleBackColor = true;
@@ -149,9 +160,10 @@
             // 
             // butCanc
             // 
-            this.butCanc.Location = new System.Drawing.Point(103, 165);
+            this.butCanc.Location = new System.Drawing.Point(263, 208);
+            this.butCanc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.butCanc.Name = "butCanc";
-            this.butCanc.Size = new System.Drawing.Size(75, 22);
+            this.butCanc.Size = new System.Drawing.Size(103, 27);
             this.butCanc.TabIndex = 2;
             this.butCanc.Text = "Cancel";
             this.butCanc.UseVisualStyleBackColor = true;
@@ -169,59 +181,66 @@
             this.GoupLog.Controls.Add(this.checkLog);
             this.GoupLog.Controls.Add(this.textLogPath);
             this.GoupLog.Controls.Add(this.butLogBrowse);
-            this.GoupLog.Location = new System.Drawing.Point(201, 13);
+            this.GoupLog.Location = new System.Drawing.Point(268, 16);
+            this.GoupLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GoupLog.Name = "GoupLog";
-            this.GoupLog.Size = new System.Drawing.Size(200, 141);
+            this.GoupLog.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GoupLog.Size = new System.Drawing.Size(267, 174);
             this.GoupLog.TabIndex = 3;
             this.GoupLog.TabStop = false;
             this.GoupLog.Text = "Log";
             // 
-            // textLogPath
+            // label2
             // 
-            this.textLogPath.Location = new System.Drawing.Point(7, 58);
-            this.textLogPath.Name = "textLogPath";
-            this.textLogPath.Size = new System.Drawing.Size(100, 20);
-            this.textLogPath.TabIndex = 0;
-            // 
-            // butLogBrowse
-            // 
-            this.butLogBrowse.Location = new System.Drawing.Point(113, 58);
-            this.butLogBrowse.Name = "butLogBrowse";
-            this.butLogBrowse.Size = new System.Drawing.Size(75, 23);
-            this.butLogBrowse.TabIndex = 6;
-            this.butLogBrowse.Text = "browse";
-            this.butLogBrowse.UseVisualStyleBackColor = true;
-            this.butLogBrowse.Click += new System.EventHandler(this.textLogPath_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 46);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 17);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Where to save";
             // 
             // checkLog
             // 
             this.checkLog.AutoSize = true;
-            this.checkLog.Location = new System.Drawing.Point(7, 17);
+            this.checkLog.Location = new System.Drawing.Point(9, 21);
+            this.checkLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkLog.Name = "checkLog";
-            this.checkLog.Size = new System.Drawing.Size(87, 17);
+            this.checkLog.Size = new System.Drawing.Size(110, 21);
             this.checkLog.TabIndex = 7;
             this.checkLog.Text = "Save :Value:";
             this.checkLog.UseVisualStyleBackColor = true;
             this.checkLog.CheckedChanged += new System.EventHandler(this.checkLog_CheckedChanged);
             // 
-            // label2
+            // textLogPath
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Where to save";
+            this.textLogPath.Location = new System.Drawing.Point(9, 71);
+            this.textLogPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textLogPath.Name = "textLogPath";
+            this.textLogPath.Size = new System.Drawing.Size(132, 22);
+            this.textLogPath.TabIndex = 0;
+            // 
+            // butLogBrowse
+            // 
+            this.butLogBrowse.Location = new System.Drawing.Point(151, 71);
+            this.butLogBrowse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.butLogBrowse.Name = "butLogBrowse";
+            this.butLogBrowse.Size = new System.Drawing.Size(100, 28);
+            this.butLogBrowse.TabIndex = 6;
+            this.butLogBrowse.Text = "browse";
+            this.butLogBrowse.UseVisualStyleBackColor = true;
+            this.butLogBrowse.Click += new System.EventHandler(this.textLogPath_Click);
             // 
             // option
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 208);
+            this.ClientSize = new System.Drawing.Size(551, 256);
             this.Controls.Add(this.GoupLog);
             this.Controls.Add(this.butCanc);
             this.Controls.Add(this.butSave);
             this.Controls.Add(this.AlertGroup);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "option";
             this.Text = "Option";
             this.Load += new System.EventHandler(this.option_Load);

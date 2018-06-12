@@ -72,35 +72,51 @@ namespace TempLogger
             SerialPort sData = sender as SerialPort;
             string recvData = sData.ReadLine();
 
+            recvData = recvData.Replace('.' , ',');
+
             serialData2.Invoke((MethodInvoker)delegate
             {
                 //serialData.AppendText(recvData);
                 serialData2.Text = recvData + "°";
+                Log();
             });
 
-            double data;
-            bool result = Double.TryParse(recvData, out data);
+            float data;
+            bool result = float.TryParse(recvData, out data);
             if(result)
             {
                 serialDataChart.TriggeredUpdate(data);
             }
 
-            if(double.TryParse(Properties.Settings.Default.AlertMax.ToString(), out double max) && Properties.Settings.Default.AlertBool)
-                if(double.TryParse(Properties.Settings.Default.AlertMin.ToString(), out double min))
+            if(float.TryParse(Properties.Settings.Default.AlertMax.ToString(), out float max) && Properties.Settings.Default.AlertBool)
+                if(float.TryParse(Properties.Settings.Default.AlertMin.ToString(), out float min))
                 {
+                    //textBox1.Text = "min: " + min + ", max: " + max;
+
                     if (data > max)
                     {
+                        textBox1.Text = "MAX: " + data;
                         sound();
-                        port.WriteLine("CQFHOTNL");
+                        port.WriteLine("HOT?");
                     } else if(data < min)
                     {
+                        textBox1.Text = "LOW: " + data;
                         sound();
-                        port.WriteLine("CQFLOWNL");
+                        port.WriteLine("LOW?");
                     }
-                } else
-                {
-                    port.WriteLine("CQFNORNL");
-                }
+                    else
+                    {
+                        textBox1.Text = "MIN: " + data;
+                        port.WriteLine("NOR?");
+                    }
+                } 
+        }
+
+        public void Log()
+        {
+            int ss = DateTime.Now.Second;
+            int mm = DateTime.Now.Minute;
+            int hh = DateTime.Now.Hour;
         }
 
         public void sound()
@@ -111,7 +127,10 @@ namespace TempLogger
                 sound.Play();
             } catch
             {
-                MessageBox.Show("Something is wrong");
+                if(Properties.Settings.Default.AlertPath != "")
+                {
+                    MessageBox.Show("The sound don't play.");
+                }
             }
         }
 

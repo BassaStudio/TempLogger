@@ -18,13 +18,14 @@ void setup() {
 }
 
 void loop() {
-  //Serial.println(getTemp());
+  Serial.println(getTemp());
   delay(750);
 
   if (stringComplete == true)
   {
     getCommand();
-    Serial.println(commandString);
+    //Serial.println(commandString);
+    commandt();
     inputString = "";
     stringComplete = false; 
   }
@@ -67,7 +68,7 @@ void serialEvent() {
     //Serial.println(inChar);
 
     if (inChar == '?') {
-      Serial.println(inputString);
+      //Serial.println(inputString);
       stringComplete = true;
     }
   }
