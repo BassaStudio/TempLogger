@@ -32,12 +32,13 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.Cont_text = new System.Windows.Forms.Button();
             this.Ports_compo = new System.Windows.Forms.ComboBox();
             this.tempchart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.butOption = new System.Windows.Forms.Button();
             this.serialData2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Debug = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tempchart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,26 +105,27 @@
             this.serialData2.Name = "serialData2";
             this.serialData2.Size = new System.Drawing.Size(132, 22);
             this.serialData2.TabIndex = 7;
-            this.serialData2.Text = "Data";
+            this.serialData2.Text = "Grader";
             // 
-            // textBox1
+            // Debug
             // 
-            this.textBox1.Location = new System.Drawing.Point(237, 459);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 8;
+            this.Debug.Location = new System.Drawing.Point(176, 458);
+            this.Debug.Name = "Debug";
+            this.Debug.Size = new System.Drawing.Size(100, 22);
+            this.Debug.TabIndex = 8;
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 498);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Debug);
             this.Controls.Add(this.serialData2);
             this.Controls.Add(this.butOption);
             this.Controls.Add(this.tempchart);
             this.Controls.Add(this.Ports_compo);
             this.Controls.Add(this.Cont_text);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "main";
             this.Text = "TempLogger";
@@ -140,7 +142,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart tempchart;
         private System.Windows.Forms.Button butOption;
         private System.Windows.Forms.TextBox serialData2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Debug;
     }
 }
 

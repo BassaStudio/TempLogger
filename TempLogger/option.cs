@@ -26,6 +26,8 @@ namespace TempLogger
             Properties.Settings.Default.LogBool = checkLog.Checked;
             Properties.Settings.Default.LogPath = textLogPath.Text;
 
+            Properties.Settings.Default.LogInt = 
+
             Properties.Settings.Default.Save();
             this.Close();
         }

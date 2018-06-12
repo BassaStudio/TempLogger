@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO.Ports;
+using System.IO;
 using System.Windows.Forms;
 using rtChart;
 using System.Media;
@@ -13,6 +14,8 @@ namespace TempLogger
         public bool isConnect = false;
 
         kayChart serialDataChart;
+
+        bool LogFile = false;
 
         public main()
         {
@@ -78,7 +81,8 @@ namespace TempLogger
             {
                 //serialData.AppendText(recvData);
                 serialData2.Text = recvData + "°";
-                Log();
+                double.TryParse(recvData, out double datain);
+                Log(datain);
             });
 
             float data;
@@ -95,28 +99,84 @@ namespace TempLogger
 
                     if (data > max)
                     {
-                        textBox1.Text = "MAX: " + data;
                         sound();
                         port.WriteLine("HOT?");
                     } else if(data < min)
                     {
-                        textBox1.Text = "LOW: " + data;
                         sound();
                         port.WriteLine("LOW?");
                     }
                     else
                     {
-                        textBox1.Text = "MIN: " + data;
                         port.WriteLine("NOR?");
                     }
                 } 
         }
 
-        public void Log()
+        public void Log(double data)
         {
+            int dd = DateTime.Now.Day;
+            int mo = DateTime.Now.Month;
+            int yy = DateTime.Now.Year;
+
+
             int ss = DateTime.Now.Second;
             int mm = DateTime.Now.Minute;
             int hh = DateTime.Now.Hour;
+
+            String Date = "";
+
+            Date += compineDate(yy);
+            Date += "-";
+            Date += compineDate(mo);
+            Date += "-";
+            Date += compineDate(dd);
+
+            string LogPath = Properties.Settings.Default.LogPath + "/" + Date + ".txt";
+
+            try
+            {
+                if (File.Exists(LogPath) && Properties.Settings.Default.LogBool && !LogFile)
+                {
+                    using (StreamWriter sw = new StreamWriter(LogPath, true))
+                    {
+                        sw.WriteLine(Date + "< " + data);
+                        Debug.Text = "create";
+
+                    }
+                }
+                else if(!LogFile)
+                {
+                    File.AppendAllText(LogPath, Date + "< " + data + "\r\n");
+                   
+                }
+            } catch
+            {
+                MessageBox.Show("Can't create file");
+                LogFile = true;
+            }
+
+
+
+           
+
+        }
+
+        private string compineDate(int var)
+        {
+            string Result = "";
+
+            if (var < 10)
+            {
+                Result += 0;
+                Result += var;
+            }
+            else
+            {
+                Result += var;
+            }
+
+            return Result;
         }
 
         public void sound()
