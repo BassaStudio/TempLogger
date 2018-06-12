@@ -60,7 +60,9 @@ namespace TempLogger
             
                 if(!port.IsOpen)
                 {
+                    
                     port.Open();
+                    port.WriteLine("SEC" + Properties.Settings.Default.LogInt + "?");
                     isConnect = true;
                     Cont_text.Text = "Disconnect";
                 }
@@ -72,8 +74,11 @@ namespace TempLogger
 
         private void SerialDataReceivedEventHandler(object sender, SerialDataReceivedEventArgs e)
         {
+            
             SerialPort sData = sender as SerialPort;
             string recvData = sData.ReadLine();
+
+            Debug.Text = "Data";
 
             recvData = recvData.Replace('.' , ',');
 
@@ -132,6 +137,13 @@ namespace TempLogger
             Date += "-";
             Date += compineDate(dd);
 
+            string Time = "";
+            Time += compineDate(hh);
+            Time += "-";
+            Time += compineDate(mm);
+            Time += "-";
+            Time += compineDate(ss);
+
             string LogPath = Properties.Settings.Default.LogPath + "/" + Date + ".txt";
 
             try
@@ -140,14 +152,14 @@ namespace TempLogger
                 {
                     using (StreamWriter sw = new StreamWriter(LogPath, true))
                     {
-                        sw.WriteLine(Date + "< " + data);
+                        sw.WriteLine(Time + ": " + data);
                         Debug.Text = "create";
 
                     }
                 }
                 else if(!LogFile)
                 {
-                    File.AppendAllText(LogPath, Date + "< " + data + "\r\n");
+                    File.AppendAllText(LogPath, Time + ":  " + data + "\r\n");
                    
                 }
             } catch

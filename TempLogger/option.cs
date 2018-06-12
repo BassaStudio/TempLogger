@@ -5,6 +5,7 @@ namespace TempLogger
 {
     public partial class option : Form
     {
+        //TODO: Fixed the code
 
         public option()
         {
@@ -26,7 +27,11 @@ namespace TempLogger
             Properties.Settings.Default.LogBool = checkLog.Checked;
             Properties.Settings.Default.LogPath = textLogPath.Text;
 
-            Properties.Settings.Default.LogInt = 
+
+            if(int.TryParse(logIntNum.Value.ToString(), out int result))
+            {
+                Properties.Settings.Default.LogInt = result;
+            }
 
             Properties.Settings.Default.Save();
             this.Close();
@@ -42,6 +47,10 @@ namespace TempLogger
 
             textPath.Text = Properties.Settings.Default.AlertPath;
             textLogPath.Text = Properties.Settings.Default.LogPath;
+
+            if(decimal.TryParse(Properties.Settings.Default.LogInt.ToString(), out decimal result)) {
+                logIntNum.Value = result;
+            }
 
             toggleAlert();
             logToggle();

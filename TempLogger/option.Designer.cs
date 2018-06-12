@@ -249,9 +249,24 @@
             // logIntNum
             // 
             this.logIntNum.Location = new System.Drawing.Point(105, 101);
+            this.logIntNum.Maximum = new decimal(new int[] {
+            3600,
+            0,
+            0,
+            0});
+            this.logIntNum.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.logIntNum.Name = "logIntNum";
             this.logIntNum.Size = new System.Drawing.Size(120, 22);
             this.logIntNum.TabIndex = 10;
+            this.logIntNum.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // option
             // 

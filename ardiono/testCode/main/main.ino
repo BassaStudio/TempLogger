@@ -8,6 +8,9 @@ String inputString = "";
 String commandString = "";
 bool stringComplete = false;
 
+int delayinterval = 10000;
+
+int lastTime = 0;
 
 void setup() {
   Serial.begin(9400);
@@ -18,17 +21,20 @@ void setup() {
 }
 
 void loop() {
-  Serial.println(getTemp());
-  delay(750);
-
+  
+  if(millis() - lastTime > delayinterval){
+    Serial.println(getTemp());
+    lastTime = millis();
+  }
+  
   if (stringComplete == true)
   {
-    getCommand();
-    //Serial.println(commandString);
-    commandt();
-    inputString = "";
-    stringComplete = false; 
-  }
+     getCommand();
+     //Serial.println(commandString);
+     commandt();
+     inputString = "";
+     stringComplete = false; 
+   } 
 }
 
 void commandt() {
@@ -49,6 +55,11 @@ void commandt() {
       digitalWrite(Red, LOW);
       digitalWrite(Yellow, LOW);
       digitalWrite(Green, HIGH);  
+    } else if(commandString == "SEC") {
+        unsigned int lastStringLength = inputString.length();
+        String mil = inputString.substring(3,lastStringLength-1);
+        delayinterval = (mil.toInt());
+        delayinterval = delayinterval * 1000;
     }
 }
 
