@@ -105,15 +105,15 @@ namespace TempLogger
                     if (data > max)
                     {
                         sound();
-                        port.WriteLine("HOT?");
+                        port.Write("HOT?");
                     } else if(data < min)
                     {
                         sound();
-                        port.WriteLine("LOW?");
+                        port.Write("LOW?");
                     }
                     else
                     {
-                        port.WriteLine("NOR?");
+                        port.Write("NOR?");
                     }
                 } 
         }
@@ -159,7 +159,7 @@ namespace TempLogger
                 }
                 else if(!LogFile)
                 {
-                    File.AppendAllText(LogPath, Time + ":  " + data + "\r\n");
+                    File.AppendAllText(LogPath, Time + ": " + data + "\r\n");
                    
                 }
             } catch

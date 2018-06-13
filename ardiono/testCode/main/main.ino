@@ -8,9 +8,8 @@ String inputString = "";
 String commandString = "";
 bool stringComplete = false;
 
-int delayinterval = 10000;
-
-int lastTime = 0;
+unsigned int delayinterval = 10000;
+unsigned long lastTime = 0;
 
 void setup() {
   Serial.begin(9400);
@@ -21,12 +20,10 @@ void setup() {
 }
 
 void loop() {
-  
-  if(millis() - lastTime > delayinterval){
+  if(millis() - lastTime > (long)delayinterval){
     Serial.println(getTemp());
     lastTime = millis();
   }
-  
   if (stringComplete == true)
   {
      getCommand();
@@ -34,7 +31,7 @@ void loop() {
      commandt();
      inputString = "";
      stringComplete = false; 
-   } 
+   }
 }
 
 void commandt() {
