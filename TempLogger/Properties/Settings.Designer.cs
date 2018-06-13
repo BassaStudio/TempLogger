@@ -25,7 +25,7 @@ namespace TempLogger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        [global::System.Configuration.DefaultSettingValueAttribute("27")]
         public decimal AlertMax {
             get {
                 return ((decimal)(this["AlertMax"]));
@@ -97,7 +97,7 @@ namespace TempLogger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
         public int LogInt {
             get {
                 return ((int)(this["LogInt"]));

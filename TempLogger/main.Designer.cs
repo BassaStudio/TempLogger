@@ -39,6 +39,7 @@
             this.butOption = new System.Windows.Forms.Button();
             this.serialData2 = new System.Windows.Forms.TextBox();
             this.Debug = new System.Windows.Forms.TextBox();
+            this.Logsbut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tempchart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,7 +91,7 @@
             // butOption
             // 
             this.butOption.Location = new System.Drawing.Point(567, 10);
-            this.butOption.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.butOption.Margin = new System.Windows.Forms.Padding(4);
             this.butOption.Name = "butOption";
             this.butOption.Size = new System.Drawing.Size(100, 26);
             this.butOption.TabIndex = 6;
@@ -101,7 +102,7 @@
             // serialData2
             // 
             this.serialData2.Location = new System.Drawing.Point(12, 459);
-            this.serialData2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.serialData2.Margin = new System.Windows.Forms.Padding(4);
             this.serialData2.Name = "serialData2";
             this.serialData2.Size = new System.Drawing.Size(132, 22);
             this.serialData2.TabIndex = 7;
@@ -109,22 +110,35 @@
             // 
             // Debug
             // 
+            this.Debug.Enabled = false;
             this.Debug.Location = new System.Drawing.Point(176, 458);
             this.Debug.Name = "Debug";
             this.Debug.Size = new System.Drawing.Size(100, 22);
             this.Debug.TabIndex = 8;
+            // 
+            // Logsbut
+            // 
+            this.Logsbut.Location = new System.Drawing.Point(592, 459);
+            this.Logsbut.Name = "Logsbut";
+            this.Logsbut.Size = new System.Drawing.Size(75, 23);
+            this.Logsbut.TabIndex = 9;
+            this.Logsbut.Text = "Logs";
+            this.Logsbut.UseVisualStyleBackColor = true;
+            this.Logsbut.Click += new System.EventHandler(this.Logsbut_Click);
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(683, 498);
+            this.Controls.Add(this.Logsbut);
             this.Controls.Add(this.Debug);
             this.Controls.Add(this.serialData2);
             this.Controls.Add(this.butOption);
             this.Controls.Add(this.tempchart);
             this.Controls.Add(this.Ports_compo);
             this.Controls.Add(this.Cont_text);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "main";
@@ -143,6 +157,7 @@
         private System.Windows.Forms.Button butOption;
         private System.Windows.Forms.TextBox serialData2;
         private System.Windows.Forms.TextBox Debug;
+        private System.Windows.Forms.Button Logsbut;
     }
 }
 

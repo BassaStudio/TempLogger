@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using rtChart;
 using System.Media;
+using System.Diagnostics;
 
 namespace TempLogger
 {
@@ -78,7 +79,13 @@ namespace TempLogger
             SerialPort sData = sender as SerialPort;
             string recvData = sData.ReadLine();
 
-            Debug.Text = "Data";
+            try
+            {
+                Debug.Text = "Data";
+            } catch
+            {
+
+            }
 
             recvData = recvData.Replace('.' , ',');
 
@@ -223,6 +230,19 @@ namespace TempLogger
             } else
             {
                 MessageBox.Show("You need to press the disconnect button");
+            }
+        }
+
+        private void Logsbut_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(Properties.Settings.Default.LogPath);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Can't open logs folder");
             }
         }
     }

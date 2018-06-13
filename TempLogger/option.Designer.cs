@@ -42,12 +42,12 @@
             this.butCanc = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.GoupLog = new System.Windows.Forms.GroupBox();
+            this.logIntNum = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.checkLog = new System.Windows.Forms.CheckBox();
             this.textLogPath = new System.Windows.Forms.TextBox();
             this.butLogBrowse = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.logIntNum = new System.Windows.Forms.NumericUpDown();
             this.AlertGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMax)).BeginInit();
@@ -196,6 +196,37 @@
             this.GoupLog.TabStop = false;
             this.GoupLog.Text = "Log";
             // 
+            // logIntNum
+            // 
+            this.logIntNum.Location = new System.Drawing.Point(105, 101);
+            this.logIntNum.Maximum = new decimal(new int[] {
+            7200,
+            0,
+            0,
+            0});
+            this.logIntNum.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.logIntNum.Name = "logIntNum";
+            this.logIntNum.Size = new System.Drawing.Size(120, 22);
+            this.logIntNum.TabIndex = 10;
+            this.logIntNum.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "interval i sec:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -236,37 +267,6 @@
             this.butLogBrowse.Text = "browse";
             this.butLogBrowse.UseVisualStyleBackColor = true;
             this.butLogBrowse.Click += new System.EventHandler(this.textLogPath_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 17);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "interval i sec:";
-            // 
-            // logIntNum
-            // 
-            this.logIntNum.Location = new System.Drawing.Point(105, 101);
-            this.logIntNum.Maximum = new decimal(new int[] {
-            3600,
-            0,
-            0,
-            0});
-            this.logIntNum.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.logIntNum.Name = "logIntNum";
-            this.logIntNum.Size = new System.Drawing.Size(120, 22);
-            this.logIntNum.TabIndex = 10;
-            this.logIntNum.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // option
             // 
