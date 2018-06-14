@@ -17,6 +17,7 @@ void setup() {
   pinMode(Red, OUTPUT);
   pinMode(Yellow, OUTPUT);
   pinMode(Green, OUTPUT);
+  pinMode(SenserPin, INPUT)
 }
 
 void loop() {
